@@ -13,17 +13,22 @@ node('master') {
   }
     }
   stage('Static Code Analysis'){
+     withMaven(maven: 'M3') {
     sh 'mvn clean verify sonar:sonar \
     -Dsonar.projectName=example=project \
     -Dsonar.projectKey=example-project \
     -Dsonar.projectVersion=$BUILD_NUMBER';
+     }
   }
   stage ('Integration Test'){
+     withMaven(maven: 'M3') {
     sh 'mvn clean verify -Dsurefire.skip=true';
     junit '**/target/failsafe-reports/TEST-*.xml'
     archive 'target/*.jar'
+     }
   }
   stage ('Publish'){
+     withMaven(maven: 'M3') {
     def server = Artifactory.server 'local art'
     def uploadSpec = """{
       "files": [
@@ -36,4 +41,5 @@ node('master') {
     }"""
     server.upload(uploadSpec)
   }
+}
 }
