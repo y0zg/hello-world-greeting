@@ -15,10 +15,7 @@ node('master') {
   stage('Static Code Analysis'){
      withMaven(maven: 'M3') {
     sh 'mvn -X clean verify sonar:sonar \
-    -Dsonar.host.url=http://67f061b4.ngrok.io:9000 \
-    -Dsonar.login=admin \
-    -Dsonar.password=admin \
-    -Dsonar.projectName=example=project \
+    -Dsonar.projectName=example-project \
     -Dsonar.projectKey=example-project \
     -Dsonar.projectVersion=$BUILD_NUMBER';
      }
