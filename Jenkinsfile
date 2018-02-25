@@ -29,7 +29,7 @@ node('master') {
   }
   stage ('Publish'){
      withMaven(maven: 'M3') {
-    def server = Artifactory.server 'local art'
+    def server = Artifactory.server 'Default Artifactory Server'
     def uploadSpec = """{
       "files": [
         {
