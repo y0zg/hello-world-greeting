@@ -9,7 +9,7 @@ node('docker') {
   }
   stage('Static Code Analysis'){
     sh 'mvn clean verify sonar:sonar
-    -Dsonar.projectName=example-project
+    -Dsonar.projectName=example=project
     -Dsonar.projectKey=example-project
     -Dsonar.projectVersion=$BUILD_NUMBER';
   }
