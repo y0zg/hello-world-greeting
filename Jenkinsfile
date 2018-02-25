@@ -14,9 +14,9 @@ node('master') {
     }
   stage('Static Code Analysis'){
      withMaven(maven: 'M3') {
-    sh 'mvn clean verify sonar:sonar \
-    -Dsonar.projectName=example=project \
-    -Dsonar.projectKey=example-project \
+    sh 'mvn -X clean verify sonar:sonar
+    -Dsonar.projectName=example=project
+    -Dsonar.projectKey=example-project
     -Dsonar.projectVersion=$BUILD_NUMBER';
      }
   }
