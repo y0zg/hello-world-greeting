@@ -20,7 +20,7 @@ node('master') {
     archive 'target/*.jar'
   }
   stage ('Publish'){
-     
+//curl -H 'X-JFrog-Art-Api: <API_KEY>' -T <PATH_TO_FILE> "http://localhost:8081/artifactory/example-project/<TARGET_FILE_PATH>"     
     def server = Artifactory.server 'Default Artifactory Server'
     def uploadSpec = """{
       "files": [
