@@ -8,9 +8,9 @@ node('docker') {
     archive 'target/*.jar'
   }
   stage('Static Code Analysis'){
-    sh 'mvn clean verify sonar:sonar
-    -Dsonar.projectName=example=project
-    -Dsonar.projectKey=example-project
+    sh 'mvn clean verify sonar:sonar \
+    -Dsonar.projectName=example=project \
+    -Dsonar.projectKey=example-project \
     -Dsonar.projectVersion=$BUILD_NUMBER';
   }
   stage ('Integration Test'){
